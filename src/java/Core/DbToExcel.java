@@ -29,7 +29,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class DbToExcel {
 
-    public static void dbtoex () throws ClassNotFoundException, SQLException, FileNotFoundException, IOException{
+    public static void dbtoex(String filename ) throws ClassNotFoundException, SQLException, FileNotFoundException, IOException {
 
         //Connecting to the database
         Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -38,11 +38,12 @@ public class DbToExcel {
         Statement statement = con.createStatement();
         ResultSet resultSet = statement.executeQuery("select * from excel");
 
-        //Creating a Work Book
-        XSSFWorkbook workbook = new XSSFWorkbook();
+        File file = new File(filename);
+        FileInputStream fis = new FileInputStream(file);
+        XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
         //Creating a Spread Sheet
-        XSSFSheet spreadsheet = workbook.createSheet("SalesOrder2");
+        XSSFSheet spreadsheet = workbook.createSheet("SalesOrder3");
         XSSFRow row = spreadsheet.createRow(0);
         XSSFCell cell;
 
@@ -89,7 +90,7 @@ public class DbToExcel {
         }
 
         try (FileOutputStream out = new FileOutputStream(
-                new File("C:\\Users\\DATA PC\\Documents\\NetBeansProjects\\ExcelPoi\\src\\java\\Document\\SampleData2.xlsx"))) {
+                new File(filename))) {
             workbook.write(out);
         }
 

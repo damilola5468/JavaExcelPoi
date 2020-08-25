@@ -17,9 +17,9 @@ import java.sql.SQLException;
 public class PoiTest {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
-//        String filename = "C:\\\\Users\\\\DATA PC\\\\Documents\\\\NetBeansProjects\\\\ExcelPoi\\\\src\\\\java\\\\Document\\\\SampleData.xlsx";
+        String filename = "C:\\\\Users\\\\DATA PC\\\\Documents\\\\NetBeansProjects\\\\ExcelPoi\\\\src\\\\java\\\\Document\\\\SampleData.xlsx";
 //        ExcelToDb.ExcelToDb(filename);
-          DbToExcel.dbtoex();
+        DbToExcel.dbtoex(filename);
     }
 
 }
